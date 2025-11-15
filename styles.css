@@ -10,7 +10,7 @@ body {
   background-color: var(--neutral-bg); /* Using CSS variable */
   color: var(--text-dark); /* Using CSS variable */
   line-height: 1.6;
-  text-align: left;
+  text-align: center;
 }
 
 a {
@@ -423,4 +423,5 @@ footer {
 @keyframes slideIn {
   from { opacity: 0; transform: translateX(50px); }
   to { opacity: 1; transform: translateX(0); }
+
 }
