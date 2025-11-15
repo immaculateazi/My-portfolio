@@ -1,0 +1,426 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--neutral-bg); /* Using CSS variable */
+  color: var(--text-dark); /* Using CSS variable */
+  line-height: 1.6;
+  text-align: left;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Colors */
+:root {
+  --primary-color: #1E3A8A; 
+  --accent-color: #FF6600;  
+  --neutral-bg: #f8f8f8;
+  --text-dark: #333333;
+  --header-bg: #1E3A8A;      /* Custom header bg (Dark Blue) */
+  --footer-bg: #111827;      /* Custom footer bg */
+  --header-text: #ffffff;
+  --footer-text: #e5e7eb;
+}
+
+/* Layout */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header */
+header {
+  background-color: var(--header-bg);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Styling */
+.logo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: white;
+}
+
+.logo sup {
+  font-size: 0.8rem;
+  color: white;
+  vertical-align: super;
+}
+
+nav h2 a,
+nav h2 {
+  color: var(--header-text);
+  font-weight: 700;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 1.5rem;
+}
+
+nav ul li a {
+  color: var(--header-text);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: var(--accent-color);
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 2rem;
+  background: #ffffff;
+}
+
+.hero-content {
+  flex: 1 1 500px;
+  animation: fadeIn 1.2s ease-in-out;
+  min-width: 280px;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.hero-content h1 span {
+  color: var(--accent-color); /* Updated to use accent color */
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #555;
+  max-width: 500px;
+  margin-bottom: 1.5rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Hero Buttons - Reused for Project 'View page' links */
+.btn {
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+  text-align: center; /* Ensure button text is centered */
+}
+
+.btn.primary {
+  background: var(--accent-color); /* Using accent color */
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #1E3A8A;
+  transform: scale(1.05);
+}
+
+.btn.secondary {
+  border: 2px solid var(--accent-color); /* Using accent color */
+  color: var(--accent-color);
+}
+
+.btn.secondary:hover {
+  background: var(--accent-color);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Hero Image */
+.hero-image {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: center;
+  min-width: 280px;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  animation: slideIn 1.2s ease-in-out;
+}
+/* Responsive: Stack text above image on smaller screens */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column; /* text above image */
+    text-align: center;
+  }
+
+  .hero-content, .hero-image {
+    flex: 1 1 100%;
+  }
+
+  .hero-image img {
+    max-width: 280px;
+    margin-top: 2rem;
+  }
+
+  .cta-buttons {
+    justify-content: center;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* --- SECTIONS & PROJECT STYLES --- */
+section {
+  padding: 4rem 0;
+}
+
+section h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+}
+
+/* Grid Layouts */
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+/* PROJECTS GRID */
+.projects-grid {
+  /* Using 280px minimum as per your existing grid, but adjusted to 2rem gap */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.skills-grid {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  justify-items: center;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  padding: 0; /* Removed padding here to allow image to go edge-to-edge */
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  overflow: hidden; /* Needed for border-radius on content */
+  
+  /* Projects-specific flex properties */
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.card img {
+  width: 100%;
+  /* Set consistent image height for projects as requested */
+  height: 200px; 
+  object-fit: cover;
+  margin-bottom: 0; /* Remove bottom margin from default card img style */
+  border-radius: 10px 10px 0 0; /* Match container border-radius */
+}
+
+/* Project Card Content Styling */
+.card h3 {
+  color: var(--primary-color); /* Using primary color */
+  font-size: 1.5em;
+  margin: 1rem 1.5rem 0.5rem 1.5rem; /* Consistent padding with card content */
+}
+
+.card p {
+  padding: 0 1.5rem;
+  margin-bottom: 1rem;
+  flex-grow: 1; /* Ensures text area expands to push button to bottom */
+}
+
+/* Project Button Styling (Overriding .btn base) */
+.card .btn {
+  /* Ensure project buttons use the main brand color and are consistently positioned */
+  display: inline-block;
+  background-color: var(--primary-color); /* Primary color for project button */
+  color: white;
+  padding: 0.8rem 1.6rem;
+  margin: 0 1.5rem 1.5rem 1.5rem; /* Margin to position the button */
+  border-radius: 6px;
+  align-self: flex-start; /* Aligns button to the start (left) */
+  font-size: 1rem;
+}
+
+.card .btn:hover {
+  background-color: #dd5005; /* Darker primary color on hover */
+  transform: none; /* Reset transform from base .btn for uniformity on cards */
+}
+
+/* About Page - Timeline */
+.timeline {
+  list-style: none;
+  padding-left: 0;
+}
+
+.timeline li {
+  margin-bottom: 1.5rem;
+}
+
+.timeline li h4 {
+  font-weight: 600;
+}
+
+/* Contact Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+form input,
+form textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  width: fit-content;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: var(--accent-color);
+}
+
+/* Social Icons */
+.social-icons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-icons a {
+  font-size: 2rem;
+  color: var(--primary-color);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.3);
+  color: var(--accent-color);
+}
+
+/* Email Icon */
+p a i.fas.fa-envelope {
+  font-size: 2rem;
+  color: var(--primary-color);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+p a:hover i.fas.fa-envelope {
+  transform: scale(1.3);
+  color: var(--accent-color);
+}
+
+/* Footer */
+footer {
+  background-color: var(--footer-bg);
+  padding: 2rem 0;
+  color: var(--footer-text);
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .subtitle {
+    margin: 0 auto;
+  }
+
+  .cta-buttons {
+    justify-content: center;
+  }
+
+  .hero-image img {
+    width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav {
+    flex-direction: column;
+  }
+}
+
+/* Subtle Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
